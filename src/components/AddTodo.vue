@@ -40,6 +40,10 @@ input[type="text"] {
 
   &:focus,
   &:not(:placeholder-shown) {
+    border: 2px solid lightslategray;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.12), 0 0 0 rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
     + label {
       z-index: 10;
       top: 2%;
@@ -49,10 +53,6 @@ input[type="text"] {
       color: ghostwhite;
       background-color: dimgray;
     }
-  }
-
-  &:focus {
-    border: 2px solid slategray;
   }
 
   &::placeholder {
