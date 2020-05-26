@@ -2,17 +2,17 @@
   <div id="app">
     <h1>Todo App</h1>
     <hr />
-    <AddTodo />
+    <AddTodo @add-todo="addTodo"/>
     <TodoList
       v-bind:todos="todos"
       @remove-todo="removeTodo"
-      @animate="animate" />
+    />
   </div>
 </template>
 
 <script>
-import TodoList from '@/components/TodoList.vue';
-import AddTodo from '@/components/AddTodo.vue';
+import TodoList from './components/TodoList.vue';
+import AddTodo from './components/AddTodo.vue';
 
 export default {
   name: 'App',
@@ -23,29 +23,26 @@ export default {
           id: 1,
           label: 'Learn vue',
           isCompleted: false,
-          animated: false,
         },
         {
           id: 2,
           label: 'Upload on git daily',
           isCompleted: false,
-          animated: false,
         },
         {
           id: 3,
           label: 'Progressively improve',
           isCompleted: false,
-          animated: false,
         },
       ],
     };
   },
   methods: {
     removeTodo(id) {
-      setTimeout(
-        () => { this.todos = this.todos.filter((t) => t.id !== id); },
-        300,
-      );
+      this.todos = this.todos.filter((t) => t.id !== id);
+    },
+    addTodo(newTodo) {
+      this.todos.push(newTodo);
     },
   },
   components: {

@@ -1,12 +1,35 @@
 <template>
-  <form class="wrapper">
+  <form @submit.prevent="onSubmit" class="wrapper">
     <div class="input-container">
-      <input type="text" placeholder="What needs to be done?">
+      <input type="text" placeholder="What needs to be done?" v-model="title">
       <label class="label">What needs to be done?</label>
     </div>
     <button type="submit">Create</button>
   </form>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      title: '',
+    };
+  },
+  methods: {
+    onSubmit() {
+      if (this.title.trim()) {
+        const newTodo = {
+          id: Date.now(),
+          label: this.title,
+          isCompleted: false,
+        };
+
+        this.$emit('add-todo', newTodo);
+      }
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 @import '@/scss/_mixins.scss';

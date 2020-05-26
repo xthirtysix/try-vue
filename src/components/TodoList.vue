@@ -1,10 +1,11 @@
 <template>
   <ul>
     <TodoItem
-      v-for="todo in todos"
-      v-bind:key="todo.id"
-      v-bind:todo="todo"
-      v-on:remove-todo="removeTodo"/>
+      v-for="(todo, i) in todos"
+      :key="todo.id"
+      :todo="todo"
+      :index="i"
+      @:remove-todo="removeTodo"/>
   </ul>
 </template>
 
